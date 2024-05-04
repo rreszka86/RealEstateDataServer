@@ -54,4 +54,12 @@ public class InterestRatesService {
         });
 
     }
+
+    public List<InterestRates> getInterestRatesByDateRange(String fromDate, String toDate){
+        return repository.findByDateBetween(fromDate, toDate);
+    }
+
+    public List<InterestRates> getInterestRatesFromDate(String fromDate){
+        return repository.findByDateAfter(fromDate);
+    }
 }
