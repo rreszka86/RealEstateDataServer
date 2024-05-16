@@ -46,4 +46,32 @@ public class HousingPricesService {
         }
     }
 
+    public List<HousingPrices> getHousingPricesByName(String name){
+        return repository.findByName(name);
+    }
+
+    public List<HousingPrices> getHousingPricesByTransaction(String transaction){
+        return repository.findByTransaction(transaction);
+    }
+
+    public List<HousingPrices> getHousingPricesBySurface(String surface){
+        return repository.findBySurface(surface);
+    }
+
+    public List<HousingPrices> getHousingPricesByYear(Integer year){
+        return repository.findByYear(year);
+    }
+
+    public List<HousingPrices> getHousingPricesByYearNameTransaction(Integer year, String name, String transaction){
+        return repository.findByYearAndNameAndTransaction(year, name, transaction);
+    }
+
+    public List<HousingPrices> getHousingPricesByNameTransactionSurface(String name, String transaction, String surface){
+        return repository.findByNameAndTransactionAndSurface(name, transaction, surface);
+    }
+
+    public List<HousingPrices> getHousingPrices(Integer year, String name, String transaction, String surface){
+        return repository.findByYearAndNameAndTransactionAndSurface(year, name, transaction, surface);
+    }
+
 }
