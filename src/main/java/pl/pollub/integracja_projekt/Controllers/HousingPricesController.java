@@ -1,10 +1,7 @@
 package pl.pollub.integracja_projekt.Controllers;
 
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.pollub.integracja_projekt.Models.HousingPrices;
 import pl.pollub.integracja_projekt.Repositories.HousingPricesRepository;
 import pl.pollub.integracja_projekt.Services.HousingPricesService;
@@ -14,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/housingPrices")
 @AllArgsConstructor
+@CrossOrigin(origins = "*")
 public class HousingPricesController {
 
     private final HousingPricesRepository repository;

@@ -1,8 +1,8 @@
 package pl.pollub.integracja_projekt.Services;
 
-import io.jsonwebtoken.Jwt;
 import lombok.RequiredArgsConstructor;
 
+import org.apache.poi.sl.draw.geom.GuideIf;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,6 +13,8 @@ import pl.pollub.integracja_projekt.Config.RegisterRequest;
 import pl.pollub.integracja_projekt.Models.User;
 import pl.pollub.integracja_projekt.Repositories.UserRepository;
 import pl.pollub.integracja_projekt.Utils.Role;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -29,11 +31,18 @@ public class AuthenticationService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
                 .build();
-        repository.save(user);
-        var jwtToken = jwtService.generateToken(user);
+        var foundUser = repository.findByEmail(user.getEmail());
+        if(foundUser.isEmpty()) {
+            repository.save(user);
+            var jwtToken = jwtService.generateToken(user);
 
+            return AuthenticationResponse.builder()
+                    .token(jwtToken)
+                    .status(200)
+                    .build();
+        }
         return AuthenticationResponse.builder()
-                .token(jwtToken)
+                .status(409)
                 .build();
     }
 
