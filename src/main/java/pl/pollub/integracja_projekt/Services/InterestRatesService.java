@@ -3,6 +3,7 @@ package pl.pollub.integracja_projekt.Services;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.pollub.integracja_projekt.Models.InterestRates;
 import pl.pollub.integracja_projekt.Repositories.InterestRatesRepository;
 import pl.pollub.integracja_projekt.Utils.XmlReader.InterestRatesDTO;
@@ -11,7 +12,7 @@ import pl.pollub.integracja_projekt.Utils.XmlReader.XmlReader;
 import java.util.List;
 
 @Service
-
+@Transactional
 public class InterestRatesService {
 
     private final InterestRatesRepository repository;
@@ -23,7 +24,7 @@ public class InterestRatesService {
 
     @PostConstruct
     public void loadInterestRates() {
-        XmlReader readXml = new XmlReader("src/main/resources/Data/stopy_procentowe_archiwum.xml");
+        XmlReader readXml = new XmlReader("Data/stopy_procentowe_archiwum.xml");
         List<InterestRatesDTO> list;
         list = readXml.parseXML();
 

@@ -4,6 +4,7 @@ import org.apache.poi.ss.usermodel.*;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class ExcelReader {
     public ExcelReader(String filepath) {
         arr = new ArrayList<>();
         try {
-            FileInputStream file = new FileInputStream(new File(filepath));
+            InputStream file = getClass().getClassLoader().getResourceAsStream(filepath);
             Workbook workbook = WorkbookFactory.create(file);
             Sheet sheet = workbook.getSheetAt(1);
             for (Row row : sheet) {

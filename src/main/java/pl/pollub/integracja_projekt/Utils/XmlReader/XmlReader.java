@@ -16,7 +16,7 @@ public class XmlReader {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
-            document = builder.parse(new File(filepath));
+            document = builder.parse(getClass().getClassLoader().getResourceAsStream(filepath));
             document.getDocumentElement().normalize();
         } catch (Exception e){
             e.printStackTrace();

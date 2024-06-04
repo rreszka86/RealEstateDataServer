@@ -24,7 +24,7 @@ public class HousingPricesService {
     @PostConstruct
     public void loadHousingPrices(){
         try {
-            ExcelReader reader = new ExcelReader("src/main/resources/Data/ceny_mieszkan.xlsx");
+            ExcelReader reader = new ExcelReader("Data/ceny_mieszkan.xlsx");
             List<List<String>> list;
             list = reader.getArr();
 

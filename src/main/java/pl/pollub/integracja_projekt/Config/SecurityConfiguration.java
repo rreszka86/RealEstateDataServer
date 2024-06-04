@@ -24,9 +24,8 @@ public class SecurityConfiguration {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(
                         (auth) -> auth
-                                .requestMatchers("/api/auth/register", "/api/auth/authenticate").permitAll()
+                                .requestMatchers("/api/auth/register", "/api/auth/authenticate", "/actuator/**").permitAll()
                                 .anyRequest().authenticated()
-
         )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
