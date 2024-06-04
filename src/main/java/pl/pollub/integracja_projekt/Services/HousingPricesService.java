@@ -3,6 +3,7 @@ package pl.pollub.integracja_projekt.Services;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.pollub.integracja_projekt.Models.HousingPrices;
 import pl.pollub.integracja_projekt.Repositories.HousingPricesRepository;
 import pl.pollub.integracja_projekt.Utils.ExcelReader.ExcelReader;
@@ -10,6 +11,7 @@ import pl.pollub.integracja_projekt.Utils.ExcelReader.ExcelReader;
 import java.util.List;
 
 @Service
+@Transactional
 public class HousingPricesService {
 
     private final HousingPricesRepository repository;

@@ -7,6 +7,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.pollub.integracja_projekt.Config.AuthenticationRequest;
 import pl.pollub.integracja_projekt.Config.AuthenticationResponse;
 import pl.pollub.integracja_projekt.Config.RegisterRequest;
@@ -18,6 +19,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class AuthenticationService {
 
     private final UserRepository repository;

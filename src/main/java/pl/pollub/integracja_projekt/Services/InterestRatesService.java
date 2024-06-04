@@ -11,6 +11,7 @@ import pl.pollub.integracja_projekt.Utils.XmlReader.XmlReader;
 import java.util.List;
 
 @Service
+
 public class InterestRatesService {
 
     private final InterestRatesRepository repository;
