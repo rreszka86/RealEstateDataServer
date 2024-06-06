@@ -24,6 +24,10 @@ public class HousingPricesController {
             return service.getHousingPricesByName(name);
         }
 
+        if(transaction == null && name == null){
+            return service.getHousingPricesByYearSurface(year, surface);
+        }
+
         if(surface == null){
             return service.getHousingPricesByYearNameTransaction(year, name, transaction);
         }
