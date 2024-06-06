@@ -1,5 +1,6 @@
 package pl.pollub.integracja_projekt.Services;
 
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 
 import org.apache.poi.sl.draw.geom.GuideIf;
@@ -26,6 +27,16 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+
+    @PostConstruct
+    public void initUsers(){
+        var user = User.builder()
+                .email("admin@admin.pl")
+                .password(passwordEncoder.encode("Password123@"))
+                .role(Role.ADMIN)
+                .build();
+        repository.save(user);
+    }
 
     public AuthenticationResponse register(RegisterRequest request){
         var user = User.builder()
