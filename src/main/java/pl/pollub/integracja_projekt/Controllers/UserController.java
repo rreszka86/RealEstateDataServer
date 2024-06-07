@@ -7,7 +7,6 @@ import pl.pollub.integracja_projekt.Repositories.UserRepository;
 
 @RestController
 @RequestMapping(path = "/user")
-@CrossOrigin(origins = "*")
 public class UserController {
     private final UserRepository repository;
 

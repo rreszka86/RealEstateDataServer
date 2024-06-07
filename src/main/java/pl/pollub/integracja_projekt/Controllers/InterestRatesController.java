@@ -12,7 +12,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/interestRates")
 @AllArgsConstructor
-@CrossOrigin(origins = "*")
 public class InterestRatesController {
 
     public final InterestRatesRepository repository;

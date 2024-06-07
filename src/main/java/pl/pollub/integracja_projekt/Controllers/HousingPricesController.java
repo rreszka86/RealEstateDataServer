@@ -11,7 +11,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/housingPrices")
 @AllArgsConstructor
-@CrossOrigin(origins = "*")
 public class HousingPricesController {
 
     private final HousingPricesRepository repository;

@@ -13,7 +13,6 @@ import pl.pollub.integracja_projekt.Utils.Validator;
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class AuthenticationController {
 
     private final AuthenticationService service;
