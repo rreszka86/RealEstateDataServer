@@ -79,4 +79,8 @@ public class HousingPricesService {
     public List<HousingPrices> getHousingPricesByYearSurface(Integer year, String surface){
         return repository.findByYearAndSurface(year, surface);
     }
+
+    public List<HousingPrices> getHousingPricesByNameTransaction(String name, String transaction){
+        return repository.findByNameAndTransaction(name, transaction);
+    }
 }
